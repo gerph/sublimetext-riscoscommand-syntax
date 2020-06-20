@@ -1,0 +1,507 @@
+%YAML 1.2
+---
+# RISC OS commands syntax colouring mode.
+#
+# Intended for use with Command, Obey, TaskObey, TaskExec and Desktop files.
+#
+
+
+# See http://www.sublimetext.com/docs/3/syntax.html
+name: RISCOS Command
+file_extensions: []
+scopeName: riscos-command
+scope: source.riscos-command
+
+contexts:
+  main:
+    # The main context is the initial starting point of our syntax.
+    # Include other contexts from here (or specify them directly).
+    - include: comments
+    - include: keywords
+    - include: variables
+    - include: expansions
+    - include: strings
+
+  keywords:
+    # Shortcut for 'run'
+    - match: '(?i)(^| +)(\**)(/)([^ ]+)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+        '4': string.unquoted.filename.riscos-command
+
+    # Specials for variable setting
+    - match: '(?i)(^| +)(\**)(Set|SetEval|SetMacro|Unset)( +)([^ >]+|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+        '5': variable.parameter.riscos-command
+
+    # Special case for the commands that don't need to have a space
+    - match: '(?i)(^| +)(\**)(FX|TV|Key)(?=.)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    # Commands from modules
+    - match: '(?i)(^| +)(\**)(Podules|PoduleLoad|PoduleSave)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Eval)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(PatchStats)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(CFrontDemangle)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Time|Ignore|Error|FX|TV|Shadow|Key|Echo|GO|GOS|Quit|ChangeDynamicArea|IF|Configure|Status|Show|Set|SetEval|SetMacro|Unset|Help)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Close|Exec|Spool|SpoolOn|Type|Print|List|Dump|Append|Build|Load|Save|Create|Delete|Remove|Opt)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(ROMModules|RMEnsure|RMFaster|RMKill|RMLoad|RMReInit|RMRun|RMClear|RMTidy|RMInsert|Unplug|Modules)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Cache)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(BreakClr|BreakList|BreakSet|Continue|Debug|InitStore|Memory|MemoryA|MemoryI|ShowRegs)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(HOff|HOn)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Access|Cat|CDir|Copy|Count|Dir|EnumDir|Ex|FileInfo|Info|LCat|LEx|Lib|Rename|Run|SetType|Shut|ShutDown|Stamp|Up|Wipe|Back|URD|NoDir|NoURD|NoLib)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(ResourceFS)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Desktop_ResourceFiler)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(FSLock_Lock|FSLock_Unlock|FSLock_Status|FSLock_ChangePassword)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Territories)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Alphabet|Country|Keyboard|Alphabets|Countries)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(ADFS)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Desktop_ADFSFiler)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Ram)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Desktop_RAMFSFiler)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(CDFS)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Desktop_CDFSFiler)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(DOSMap|CopyBoot)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(PipeCopy)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(AIF)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(BASIC)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(BASIC64)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Obey)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Prefix)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(AppPath|PrepPath|RemPath)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(SysLog|SysLog_Flush|SysLog_Status|SysLog_PollPeriod)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(AddApp|AppSize|Do|IfThere|LoadCMOS|Repeat|SafeLogon|FreePool|X)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(LoadModeFile|VIDCBandwidthLimit)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(BlankTime|DPMSTime)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Audio|Speaker|Stereo|SoundGain)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Volume|Voices|ChannelVoice|Sound|Tuning)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Tempo|QSound)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(ColourTransMapSize|ColourTransMap|ColourTransLoadings)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(BlendTables)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Render)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(FontList|FontCat|LoadFontCache|SaveFontCache|FontInstall|FontLibrary|FontRemove)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(ImageFileConverters)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(ImageFileRenderers|ImageFileViewer)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(IconSprites|Pointer|ToolSprites|WimpMode|WimpPalette|WimpSlot|WimpTask|WimpWriteDir|WimpKillSprite|WimpVisualFlags|WimpToolOrder|WimpTextSelection)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Filters)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(RedrawList)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Desktop)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(WimpIconBorder)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Desktop_TaskManager|StartDesktopTask|Desktop_ConfirmShutdown)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(ShellCLI)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Desktop_DisplayManager)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Filer_OpenDir|Filer_CloseDir|Filer_Run|Filer_Boot|Filer_Thumbnails|Filer_Truncation|Filer_Options|Filer_Layout|Desktop_Filer)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Filer_Action)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Desktop_Free|ShowFree)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Desktop_Pinboard|AddTinyDir|RemoveTinyDir|Pinboard|Pin|XPin|BackDrop|PinboardOptions)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Desktop_ClipboardHolder)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Desktop_WindowScroll|WimpScroll)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(ModelList)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(ShellCLI_Task|ShellCLI_TaskQuit|TaskWindow)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(AddMap|DelMap|NetMap|NetStat|NetProbe)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Net)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Desktop_NetFiler)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(SetPS|PS|ListPS)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(InetInfo|InetGateway)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Inet_ServiceByPort|Inet_ServiceByName|Inet_DecodeError)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(ResolverConfig)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(MimeMap|ReadMimeMap)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(DHCP|DHCPStatus)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(RouterDiscovery)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(FwShow)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Share|UnShare|Shares|ShareFS|ShareFSLogon|ShareFSLogoff|Desktop_ShareFSFiler|ShareFSIcon|ShareFSCache|ShareFSCacheType|ShareFSWindow)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(LanMan|LMLogon|LMInfo|LMNameMode|LMLogoff|LMServer|LMPrinters|LMStats)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(AppleAARPCache|AppleFS|ApplePAPStatus|ApplePAPTalk|ApplePing|AppleStatus|AppleZones)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Toolbox_Objects)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(Window_Gadgets)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    - match: '(?i)(^| +)(\**)(SChoose|SGet|SFlipX|SFlipY|SDelete|SList|SLoad|SMerge|SNew|SSave|SInfo|SRename|SCopy|ScreenSave|ScreenLoad)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    # Specials for 'If' commands
+    - match: '(?i)(^| +)(\**)(Then|Else)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+
+    # Commands from the library
+    - match: '(?i)(^| +)(\**)(ifthere|ifnewer)(^| +)\**'
+      scope: keyword.control.riscos-command
+
+    # Common aliased commands
+    - match: '(?i)(^| +)(\**)(Alias)((?= )|$)'
+      captures:
+        '2': keyword.control.directive.riscos-command
+        '3': keyword.other.command.riscos-command
+  numbers:
+    - match: '(?i)(^| +)(\**)((-)?[0-9.]+|&[0-9A-Fa-f]+)(^| +)\**'
+      scope: constant.numeric.riscos-command
+
+  variables:
+    # Variables are delimited by < and >
+    - match: '(?!<\|)(<)([^ >]+)(>)'
+      captures:
+        '1': keyword.other.block.begin.riscos-command
+        '2': variable.parameter.riscos-command
+        '3': keyword.other.block.end.riscos-command
+
+    # GSTrans expansions
+    - match: '(?!<\|)(\|)([A-Za-z])'
+      scope: constant.character.escape.control.riscos-command
+
+  expansions:
+    # Variables are delimited by < and >
+    - match: '(%%?\*?)([0-9])'
+      captures:
+        '1': keyword.other.subsitution.riscos-command
+        '2': variable.parameter.riscos-command
+
+  strings:
+    # Strings begin and end with quotes, and use backslashes as an escape
+    # character.
+    - match: '"'
+      scope: punctuation.definition.string.begin.riscos-command
+      push: inside_string
+
+    # Special strings that look like filenames
+    # <variable>.
+    # @. ^. &. $.
+    # filesystem::
+    # path:$
+    # path:leaf. path:^.
+    - match: '(?i)(^| +)(?=<[^ ]+>.|@.|\^.|&.|\$.|[A-Z]{3,}::|[A-Z]+:\$|[A-Z]+:(?:[A-Z0-9_-]+.|\^))'
+      scope: string.unquoted.filename.riscos-command
+      push: inside_filename
+
+  inside_string:
+    - meta_include_prototype: false
+    - meta_scope: string.quoted.double.riscos-command
+    - include: variables
+    - include: expansions
+    - match: '"'
+      scope: punctuation.definition.string.end.riscos-command
+      pop: true
+
+  inside_filename:
+    - meta_include_prototype: false
+    - meta_scope: string.unquoted.filename.riscos-command
+    - include: variables
+    - include: expansions
+    - match: '(?= |$)'
+      scope: punctuation.definition.string.end.riscos-command
+      pop: true
+
+  comments:
+    - match: '^ *\|'
+      scope: punctuation.definition.comment.riscos-command
+      push:
+        # This is an anonymous context push for brevity.
+        - meta_scope: comment.line.riscos-command
+        - match: $\n?
+          pop: true
